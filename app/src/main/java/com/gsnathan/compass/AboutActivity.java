@@ -115,6 +115,13 @@ public class AboutActivity extends AppCompatActivity {
                                 .setWebsite("https://github.com/kobakei/Android-RateThisApp")
                                 .build()
                 )
+                .addAttributions(
+                        new Attribution.Builder("CircleImageView")
+                                .addCopyrightNotice("Copyright Henning Dodenhof")
+                                .addLicense(License.APACHE)
+                                .setWebsite("https://github.com/hdodenhof/CircleImageView")
+                                .build()
+                )
                 .build();
 
         //show license dialogue
