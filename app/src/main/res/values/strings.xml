@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Material Compass</string>
+    <string name="rand_mes">Hello World</string>
+    <string name="action_settings">Settings</string>
+    <string name="calib_mes">Hold your phone in front of you and wave it in a figure eight motion.</string>
+    <string name="close_mes">Got it!</string>
+    <string name="action_calib">Calibrate</string>
+    <string name="titleSlide_desc">A material style compass for Android.</string>
+    <string name="calibSlide_title">Calibration</string>
+    <string name="permissionSlide_title">Permissions</string>
+    <string name="permissionSlide_desc">We need to access your location in order to show your latitude and longitude.</string>
+    <string name="restart_mes">In order to get the Location service to start after the grant of the permissions, you must restart the app.</string>
+    <string name="perm_notgranted">Location not enabled</string>
+</resources>
