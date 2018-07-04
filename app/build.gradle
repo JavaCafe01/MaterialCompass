@@ -37,4 +37,20 @@ dependencies {
 
     //Intro Library
     implementation 'com.heinrichreimersoftware:material-intro:1.6.2'
+
+    //Library for Card View Layout
+    implementation 'com.android.support:cardview-v7:27.1.1'
+
+    //Library Presenter
+    implementation 'com.github.franmontiel:AttributionPresenter:1.0'
+
+    //Ripple Effect Library
+    implementation 'com.balysv:material-ripple:1.0.2'
+
+    //Rating Library
+    implementation 'io.github.kobakei:ratethisapp:1.2.0'
+
+    //Circle Image View
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
 }

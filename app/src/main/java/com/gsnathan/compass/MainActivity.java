@@ -1,20 +1,7 @@
 package com.gsnathan.compass;
 
-import android.Manifest;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Criteria;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +17,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.kobakei.ratethisapp.RateThisApp;
 
 import java.util.List;
 
@@ -55,6 +44,14 @@ public class MainActivity extends AppCompatActivity {
         initViews();
         setupCompass();
         getLocation();
+
+        // Custom condition: 5 days and 5 launches
+        RateThisApp.Config config = new RateThisApp.Config(5, 5);
+        RateThisApp.init(config);
+        // Monitor launch times and interval from installation
+        RateThisApp.onCreate(this);
+        // If the condition is satisfied, "Rate this app" dialog will be shown
+        RateThisApp.showRateDialogIfNeeded(this);
     }
 
     private void onFirstInstall() {
@@ -183,6 +180,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_about:
+                startActivity(Utils.navIntent(this, AboutActivity.class));
+                return true;
             case R.id.action_calib:
                 calibrateDialog();
                 return true;

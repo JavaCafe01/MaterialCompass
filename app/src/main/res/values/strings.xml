@@ -11,4 +11,12 @@
     <string name="permissionSlide_desc">We need to access your location in order to show your latitude and longitude.</string>
     <string name="restart_mes">In order to get the Location service to start after the grant of the permissions, you must restart the app.</string>
     <string name="perm_notgranted">Location not enabled</string>
+    <string name="about">About</string>
+    <string name="version">Version</string>
+    <string name="intro">Intro</string>
+    <string name="code">Source Code</string>
+    <string name="libs">Open Source Libs</string>
+    <string name="author">Gokul Swaminathan</string>
+    <string name="email">Email Dev</string>
+    <string name="git">Github</string>
 </resources>
