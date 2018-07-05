@@ -136,7 +136,29 @@ public class MainActivity extends AppCompatActivity {
                 0.5f);
         currentAzimuth = azimuth;
         String display = (int) currentAzimuth + "";
-        degreeView.setText(display);
+
+        String cardDirect;
+
+        if(currentAzimuth == 0 || currentAzimuth == 360)
+            cardDirect = "N";
+        else if(currentAzimuth > 0 && currentAzimuth < 90)
+            cardDirect = "NE";
+        else if(currentAzimuth == 90)
+            cardDirect = "E";
+        else if(currentAzimuth > 90 && currentAzimuth < 180)
+            cardDirect = "SE";
+        else if(currentAzimuth == 180)
+            cardDirect = "S";
+        else if(currentAzimuth > 180 && currentAzimuth < 270)
+            cardDirect = "SW";
+        else if(currentAzimuth == 270)
+            cardDirect = "W";
+        else if(currentAzimuth > 270 && currentAzimuth < 360)
+            cardDirect = "NW";
+        else
+            cardDirect = "Unknown";
+
+        degreeView.setText(display + "°" + " " + cardDirect);
 
         animator.setDuration(500);
         animator.setRepeatCount(0);
