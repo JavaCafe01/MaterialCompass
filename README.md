@@ -6,6 +6,7 @@
 [![author](https://img.shields.io/badge/author-Gokul%20Swaminathan-lightgrey.svg?style=flat-square)](https://github.com/JavaCafe01)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/JavaCafe01/MaterialCompass/blob/master/LICENSE) [![platform](https://img.shields.io/badge/platform-Android-green.svg?style=flat-square)](https://www.android.com/)
 
+<img width="700" alt='Feature Graphic' src='https://github.com/JavaCafe01/MaterialCompass/blob/master/images/feature_graphic.png'/>
 
 ## Download
 
