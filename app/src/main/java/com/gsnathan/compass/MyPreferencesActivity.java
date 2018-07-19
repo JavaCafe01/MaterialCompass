@@ -92,6 +92,7 @@ public class MyPreferencesActivity extends AppCompatPreferenceActivity {
     private void setupActionBar() {
         getLayoutInflater().inflate(R.layout.toolbar, (ViewGroup) findViewById(android.R.id.content));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setElevation(4);
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
         if (useDarkTheme) {
             toolbar.setBackgroundColor(getResources().getColor(R.color.colorBlack));

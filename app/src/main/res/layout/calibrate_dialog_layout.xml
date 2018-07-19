@@ -3,13 +3,13 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <android.support.v7.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/calib_icon"
         android:adjustViewBounds="true"/>
 
-    <TextView
+    <android.support.v7.widget.AppCompatTextView
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         android:gravity="center"
         android:text="@string/calib_mes"/>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/close"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

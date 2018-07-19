@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private AlertDialog dialogBuilder;
     GPSTracker gps;
     private boolean isFirstRun;
-
     private float currentAzimuth;
 
     @Override

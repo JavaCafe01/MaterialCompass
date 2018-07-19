@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/line_view"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
@@ -56,7 +56,7 @@
                 android:elevation="4dp"
                 android:src="@drawable/line" />
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/image_dial"
                 android:layout_width="330dp"
                 android:layout_height="320dp"

@@ -4,9 +4,9 @@
     <PreferenceCategory android:title="General">
 
         <Preference
-            android:title="Location Permissions"
             android:key="per_pref"
-            android:summary="Grant location" />
+            android:summary="Grant location"
+            android:title="Location Permissions" />
 
     </PreferenceCategory>
 

@@ -1,43 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.gsnathan.compass.AboutActivity">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/my_app_bar_about"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="160dp"
+        android:fitsSystemWindows="true"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/my_app_bar_about"
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/my_toolbar_about"
                 android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
-                android:background="?android:attr/colorPrimary"
-                android:elevation="4dp"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
                 android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-        </android.support.design.widget.AppBarLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
 
-        <ScrollView xmlns:tools="http://schemas.android.com/tools"
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/my_app_bar_about">
+            android:layout_height="wrap_content"
+            android:divider="?android:dividerHorizontal"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
                 android:divider="?android:dividerHorizontal"
+                android:elevation="100dp"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    tools:ignore="PrivateResource">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/app_image"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_margin="15dp"
+                        android:layout_marginEnd="5dp"
+                        android:src="@mipmap/ic_launcher"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="#FF000000"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/text_version"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view_file"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:elevation="2dp"
+                card_view:cardCornerRadius="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:divider="?android:dividerHorizontal"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.balysv.materialripple.MaterialRippleLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:mrl_rippleColor="@color/colorAccent"
+                        app:mrl_rippleDelayClick="false"
+                        app:mrl_rippleDuration="350">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:onClick="replayIntro"
+                            android:orientation="horizontal"
+                            tools:ignore="PrivateResource">
+
+                            <android.support.v7.widget.AppCompatImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_margin="15dp"
+                                android:contentDescription="@string/intro"
+                                android:src="@drawable/replay_icon" />
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/text_intro"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="30dp"
+                                android:text="@string/intro"
+                                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+                        </LinearLayout>
+
+                    </com.balysv.materialripple.MaterialRippleLayout>
+
+                    <com.balysv.materialripple.MaterialRippleLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:mrl_rippleColor="@color/colorAccent"
+                        app:mrl_rippleDelayClick="false"
+                        app:mrl_rippleDuration="350">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:onClick="navToSourceCode"
+                            android:orientation="horizontal"
+                            tools:ignore="PrivateResource">
+
+                            <android.support.v7.widget.AppCompatImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_margin="15dp"
+                                android:contentDescription="@string/code"
+                                android:src="@drawable/code_icon" />
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/text_code"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="30dp"
+                                android:text="@string/code"
+                                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                        </LinearLayout>
+
+                    </com.balysv.materialripple.MaterialRippleLayout>
+
+                    <com.balysv.materialripple.MaterialRippleLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:mrl_rippleColor="@color/colorAccent"
+                        app:mrl_rippleDelayClick="false"
+                        app:mrl_rippleDuration="350">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:onClick="showLibraries"
+                            android:orientation="horizontal"
+                            tools:ignore="PrivateResource">
+
+                            <android.support.v7.widget.AppCompatImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_margin="15dp"
+                                android:contentDescription="@string/libs"
+                                android:src="@drawable/lib_icon" />
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/text_lib"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="30dp"
+                                android:text="@string/libs"
+                                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                        </LinearLayout>
+
+                    </com.balysv.materialripple.MaterialRippleLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view_pers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:elevation="2dp"
+                card_view:cardCornerRadius="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -50,7 +239,19 @@
                     android:elevation="100dp"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:showDividers="middle">
+                    android:showDividers="middle"
+                    android:visibility="gone">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:divider="?android:dividerHorizontal"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -63,225 +264,29 @@
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                            android:id="@+id/app_image"
+                            android:id="@+id/profile_image"
                             android:layout_width="45dp"
                             android:layout_height="45dp"
                             android:layout_margin="15dp"
                             android:layout_marginEnd="5dp"
-                            android:src="@mipmap/ic_launcher"
+                            android:src="@drawable/myprofile"
                             app:civ_border_width="2dp"
                             app:civ_border_color="#FF000000"/>
 
-                        <TextView
+                        <android.support.v7.widget.AppCompatTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
-                            android:text="@string/app_name"
+                            android:text="@string/author"
                             android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-
                     </LinearLayout>
 
-                </LinearLayout>
-
-                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/card_view_file"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:elevation="2dp"
-                    card_view:cardCornerRadius="5dp">
-
-                    <LinearLayout
+                    <com.balysv.materialripple.MaterialRippleLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:divider="?android:dividerHorizontal"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <com.balysv.materialripple.MaterialRippleLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:mrl_rippleColor="@color/colorAccent"
-                            app:mrl_rippleDelayClick="false"
-                            app:mrl_rippleDuration="350">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:clickable="true"
-                                android:focusable="true"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal"
-                                tools:ignore="PrivateResource">
-
-                                <ImageView
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
-                                    android:layout_margin="15dp"
-                                    android:contentDescription="@string/version"
-                                    android:src="@drawable/version_icon" />
-
-                                <TextView
-                                    android:id="@+id/text_version"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="30dp"
-                                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-
-                            </LinearLayout>
-
-                        </com.balysv.materialripple.MaterialRippleLayout>
-
-                        <com.balysv.materialripple.MaterialRippleLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:mrl_rippleColor="@color/colorAccent"
-                            app:mrl_rippleDelayClick="false"
-                            app:mrl_rippleDuration="350">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:clickable="true"
-                                android:focusable="true"
-                                android:gravity="center_vertical"
-                                android:onClick="replayIntro"
-                                android:orientation="horizontal"
-                                tools:ignore="PrivateResource">
-
-                                <ImageView
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
-                                    android:layout_margin="15dp"
-                                    android:contentDescription="@string/intro"
-                                    android:src="@drawable/replay_icon" />
-
-                                <TextView
-                                    android:id="@+id/text_intro"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="30dp"
-                                    android:text="@string/intro"
-                                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-
-                            </LinearLayout>
-
-                        </com.balysv.materialripple.MaterialRippleLayout>
-
-                        <com.balysv.materialripple.MaterialRippleLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:mrl_rippleColor="@color/colorAccent"
-                            app:mrl_rippleDelayClick="false"
-                            app:mrl_rippleDuration="350">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:clickable="true"
-                                android:focusable="true"
-                                android:gravity="center_vertical"
-                                android:onClick="navToSourceCode"
-                                android:orientation="horizontal"
-                                tools:ignore="PrivateResource">
-
-                                <ImageView
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
-                                    android:layout_margin="15dp"
-                                    android:contentDescription="@string/code"
-                                    android:src="@drawable/code_icon" />
-
-                                <TextView
-                                    android:id="@+id/text_code"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="30dp"
-                                    android:text="@string/code"
-                                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-                            </LinearLayout>
-
-                        </com.balysv.materialripple.MaterialRippleLayout>
-
-                        <com.balysv.materialripple.MaterialRippleLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:mrl_rippleColor="@color/colorAccent"
-                            app:mrl_rippleDelayClick="false"
-                            app:mrl_rippleDuration="350">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:clickable="true"
-                                android:focusable="true"
-                                android:gravity="center_vertical"
-                                android:onClick="showLibraries"
-                                android:orientation="horizontal"
-                                tools:ignore="PrivateResource">
-
-                                <ImageView
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
-                                    android:layout_margin="15dp"
-                                    android:contentDescription="@string/libs"
-                                    android:src="@drawable/lib_icon" />
-
-                                <TextView
-                                    android:id="@+id/text_lib"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="30dp"
-                                    android:text="@string/libs"
-                                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-                            </LinearLayout>
-
-                        </com.balysv.materialripple.MaterialRippleLayout>
-
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/card_view_pers"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:elevation="2dp"
-                    card_view:cardCornerRadius="5dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:divider="?android:dividerHorizontal"
-                        android:elevation="100dp"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:showDividers="middle"
-                        android:visibility="gone">
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:divider="?android:dividerHorizontal"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        app:mrl_rippleColor="@color/colorAccent"
+                        app:mrl_rippleDelayClick="false"
+                        app:mrl_rippleDuration="350">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -289,108 +294,71 @@
                             android:clickable="true"
                             android:focusable="true"
                             android:gravity="center_vertical"
+                            android:onClick="emailDev"
                             android:orientation="horizontal"
                             tools:ignore="PrivateResource">
 
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                xmlns:app="http://schemas.android.com/apk/res-auto"
-                                android:id="@+id/profile_image"
-                                android:layout_width="45dp"
-                                android:layout_height="45dp"
+                            <android.support.v7.widget.AppCompatImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:layout_margin="15dp"
-                                android:layout_marginEnd="5dp"
-                                android:src="@drawable/myprofile"
-                                app:civ_border_width="2dp"
-                                app:civ_border_color="#FF000000"/>
+                                android:contentDescription="@string/email"
+                                android:src="@drawable/email_icon" />
 
-                            <TextView
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/text_email"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:text="@string/author"
+                                android:layout_marginStart="30dp"
+                                android:text="@string/email"
                                 android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
                         </LinearLayout>
 
-                        <com.balysv.materialripple.MaterialRippleLayout
+                    </com.balysv.materialripple.MaterialRippleLayout>
+
+                    <com.balysv.materialripple.MaterialRippleLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:mrl_rippleColor="@color/colorAccent"
+                        app:mrl_rippleDelayClick="false"
+                        app:mrl_rippleDuration="350">
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:mrl_rippleColor="@color/colorAccent"
-                            app:mrl_rippleDelayClick="false"
-                            app:mrl_rippleDuration="350">
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:onClick="navToGit"
+                            android:orientation="horizontal"
+                            tools:ignore="PrivateResource">
 
-                            <LinearLayout
+                            <android.support.v7.widget.AppCompatImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_margin="15dp"
+                                android:contentDescription="@string/git"
+                                android:src="@drawable/github_icon" />
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:id="@+id/text_git"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:clickable="true"
-                                android:focusable="true"
-                                android:gravity="center_vertical"
-                                android:onClick="emailDev"
-                                android:orientation="horizontal"
-                                tools:ignore="PrivateResource">
+                                android:layout_marginStart="30dp"
+                                android:text="@string/git"
+                                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
-                                <ImageView
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
-                                    android:layout_margin="15dp"
-                                    android:contentDescription="@string/email"
-                                    android:src="@drawable/email_icon" />
+                        </LinearLayout>
 
-                                <TextView
-                                    android:id="@+id/text_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="30dp"
-                                    android:text="@string/email"
-                                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                    </com.balysv.materialripple.MaterialRippleLayout>
 
-                            </LinearLayout>
+                </LinearLayout>
 
-                        </com.balysv.materialripple.MaterialRippleLayout>
+            </android.support.v7.widget.CardView>
 
-                        <com.balysv.materialripple.MaterialRippleLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:mrl_rippleColor="@color/colorAccent"
-                            app:mrl_rippleDelayClick="false"
-                            app:mrl_rippleDuration="350">
+        </LinearLayout>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:clickable="true"
-                                android:focusable="true"
-                                android:gravity="center_vertical"
-                                android:onClick="navToGit"
-                                android:orientation="horizontal"
-                                tools:ignore="PrivateResource">
+    </android.support.v4.widget.NestedScrollView>
 
-                                <ImageView
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
-                                    android:layout_margin="15dp"
-                                    android:contentDescription="@string/git"
-                                    android:src="@drawable/github_icon" />
-
-                                <TextView
-                                    android:id="@+id/text_git"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="30dp"
-                                    android:text="@string/git"
-                                    android:textAppearance="@android:style/TextAppearance.Material.Medium" />
-
-                            </LinearLayout>
-
-                        </com.balysv.materialripple.MaterialRippleLayout>
-
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-            </LinearLayout>
-
-        </ScrollView>
-
-    </RelativeLayout>
-
-</android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>

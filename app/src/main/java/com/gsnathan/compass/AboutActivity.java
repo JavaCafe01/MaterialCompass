@@ -17,22 +17,23 @@ public class AboutActivity extends AppCompatActivity {
     TextView versionView;   //shows the version
     private final String APP_VERSION_RELEASE = "Version " + Utils.getAppVersion();   //contains Version + the version number
     private final String APP_VERSION_DEBUG = "Version " + Utils.getAppVersion() + "-debug";   //contains Version + the version number + debug
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         changeTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        setSupportActionBar((Toolbar) findViewById(R.id.my_toolbar_about));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initUI();
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.app_name);
     }
 
     private void changeTheme() {
         // Use the chosen theme
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         boolean useDarkTheme = preferences.getBoolean("theme_pref", false);
-
         if (useDarkTheme) {
             setTheme(R.style.AppThemeDark);
         } else {
@@ -43,6 +44,8 @@ public class AboutActivity extends AppCompatActivity {
     private void initUI() {
         //initialize the textview
         versionView = (TextView) findViewById(R.id.text_version);
+        //initialize the toolbar
+        toolbar = (Toolbar) findViewById(R.id.my_toolbar_about);
 
         // check if app is debug
         if (BuildConfig.DEBUG) {
