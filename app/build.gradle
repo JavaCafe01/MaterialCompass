@@ -6,7 +6,7 @@ android {
         applicationId "com.gsnathan.compass"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 11
+        versionCode 12
         versionName "3.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
