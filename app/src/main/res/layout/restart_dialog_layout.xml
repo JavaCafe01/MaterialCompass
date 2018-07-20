@@ -3,14 +3,14 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.AppCompatImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:src="@drawable/permissions_pic"
         android:adjustViewBounds="true"/>
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         android:gravity="center"
         android:text="@string/restart_mes"/>
 
-    <android.support.v7.widget.AppCompatButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/close"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

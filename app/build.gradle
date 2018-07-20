@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.gsnathan.compass"
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 11
-        versionName "3.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionName "3.1"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -25,21 +25,20 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    //Preference Library
-    implementation "com.android.support:preference-v7:27.1.1"
+    //AndroidX Libraries
+    implementation "androidx.appcompat:appcompat:$androidx_version"
+    implementation "com.google.android.material:material:$androidx_version"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation "androidx.preference:preference:$androidx_version"
+    implementation "androidx.cardview:cardview:$androidx_version"
+    androidTestImplementation "androidx.test:runner:$androidx_testrunner_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+
+    testImplementation 'junit:junit:4.12'
 
     //Intro Library
     implementation 'com.heinrichreimersoftware:material-intro:1.6.2'
-
-    //Library for Card View Layout
-    implementation 'com.android.support:cardview-v7:27.1.1'
 
     //Library Presenter
     implementation 'com.github.franmontiel:AttributionPresenter:1.0'
@@ -52,5 +51,4 @@ dependencies {
 
     //Circle Image View
     implementation 'de.hdodenhof:circleimageview:2.2.0'
-
 }
