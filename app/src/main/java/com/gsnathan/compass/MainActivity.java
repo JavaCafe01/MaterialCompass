@@ -1,11 +1,19 @@
 package com.gsnathan.compass;
 
+import android.Manifest;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.PermissionChecker;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         changeTheme();
+        checkPermissions();
         super.onCreate(savedInstanceState);
-        onFirstInstall();
         setContentView(R.layout.activity_main);
         initViews();
         setupCompass();
@@ -53,14 +61,15 @@ public class MainActivity extends AppCompatActivity {
         RateThisApp.showRateDialogIfNeeded(this);
     }
 
-    private void onFirstInstall() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        isFirstRun = prefs.getBoolean("FIRSTINSTALL", true);
-        if (isFirstRun) {
-            startActivity(Utils.navIntent(this, MainIntroActivity.class));
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putBoolean("FIRSTINSTALL", false);
-            editor.commit();
+    private void checkPermissions() {
+        int permission1 = PermissionChecker.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        int permission2 = PermissionChecker.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
+        if (permission1 == PermissionChecker.PERMISSION_GRANTED || permission2 == PermissionChecker.PERMISSION_GRANTED) {
+            //good to go
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                    1);
         }
     }
 
@@ -72,14 +81,13 @@ public class MainActivity extends AppCompatActivity {
             coordView.setText(doubToDMS(latitude, true) + "  " + doubToDMS(longitude, false));
         } else {
             coordView.setText(R.string.perm_notgranted);
-            Utils.showToast("Go to Material Compass settings to change location permission", Toast.LENGTH_SHORT, getApplicationContext());
+            //Utils.showToast("Go to Material Compass settings to change location permission", Toast.LENGTH_SHORT, getApplicationContext());
         }
     }
 
     private void changeTheme() {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         useDarkTheme = sp.getBoolean("theme_pref", false);
-
         if (useDarkTheme) {
             setTheme(R.style.AppThemeDark);
         } else {
@@ -117,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
     private void setupCompass() {
         compass = new Compass(this);
         Compass.CompassListener cl = new Compass.CompassListener() {
-
             @Override
             public void onNewAzimuth(float azimuth) {
                 adjustArrow(azimuth);
@@ -135,24 +142,23 @@ public class MainActivity extends AppCompatActivity {
                 0.5f);
         currentAzimuth = azimuth;
         String display = (int) currentAzimuth + "";
-
         String cardDirect;
 
-        if(currentAzimuth == 0 || currentAzimuth == 360)
+        if (currentAzimuth == 0 || currentAzimuth == 360)
             cardDirect = "N";
-        else if(currentAzimuth > 0 && currentAzimuth < 90)
+        else if (currentAzimuth > 0 && currentAzimuth < 90)
             cardDirect = "NE";
-        else if(currentAzimuth == 90)
+        else if (currentAzimuth == 90)
             cardDirect = "E";
-        else if(currentAzimuth > 90 && currentAzimuth < 180)
+        else if (currentAzimuth > 90 && currentAzimuth < 180)
             cardDirect = "SE";
-        else if(currentAzimuth == 180)
+        else if (currentAzimuth == 180)
             cardDirect = "S";
-        else if(currentAzimuth > 180 && currentAzimuth < 270)
+        else if (currentAzimuth > 180 && currentAzimuth < 270)
             cardDirect = "SW";
-        else if(currentAzimuth == 270)
+        else if (currentAzimuth == 270)
             cardDirect = "W";
-        else if(currentAzimuth > 270 && currentAzimuth < 360)
+        else if (currentAzimuth > 270 && currentAzimuth < 360)
             cardDirect = "NW";
         else
             cardDirect = "Unknown";
@@ -233,5 +239,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
         dialogBuilder.show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay!
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Utils.showToast("Permission denied to access your location", Toast.LENGTH_LONG, this);
+                }
+                return;
+            }
+        }
     }
 }

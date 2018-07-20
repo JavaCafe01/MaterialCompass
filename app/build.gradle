@@ -37,9 +37,6 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
 
-    //Intro Library
-    implementation 'com.heinrichreimersoftware:material-intro:1.6.2'
-
     //Library Presenter
     implementation 'com.github.franmontiel:AttributionPresenter:1.0'
 

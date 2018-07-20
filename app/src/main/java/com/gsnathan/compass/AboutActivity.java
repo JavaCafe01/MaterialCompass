@@ -56,11 +56,6 @@ public class AboutActivity extends AppCompatActivity {
         }
     }
 
-    public void replayIntro(View v) {
-        //navigate to intro class (replay the intro)
-        startActivity(Utils.navIntent(this, MainIntroActivity.class));
-    }
-
     public void showLibraries(View v) {
 
         //Library builder
