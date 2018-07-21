@@ -1,10 +1,14 @@
 package com.gsnathan.compass;
 
 import android.content.SharedPreferences;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.widget.TextView;
 
@@ -54,6 +58,14 @@ public class AboutActivity extends AppCompatActivity {
         {
             versionView.setText(APP_VERSION_RELEASE);
         }
+    }
+
+    public void showPriv(View v) {
+        startActivity(Utils.webIntent("https://github.com/JavaCafe01/MaterialCompass/blob/master/privacy_policy.md"));
+    }
+
+    public void showLicense(View v) {
+        startActivity(Utils.webIntent("https://github.com/JavaCafe01/MaterialCompass/blob/master/LICENSE"));
     }
 
     public void showLibraries(View v) {

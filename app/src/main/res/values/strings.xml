@@ -19,4 +19,6 @@
     <string name="author">Gokul Swaminathan</string>
     <string name="email">Email Dev</string>
     <string name="git">Github</string>
+    <string name="priv">Privacy Policy</string>
+    <string name="license">License</string>
 </resources>

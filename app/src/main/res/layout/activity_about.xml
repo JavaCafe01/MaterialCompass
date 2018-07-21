@@ -184,6 +184,76 @@
 
                     </com.balysv.materialripple.MaterialRippleLayout>
 
+                    <com.balysv.materialripple.MaterialRippleLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:mrl_rippleColor="@color/colorAccent"
+                        app:mrl_rippleDelayClick="false"
+                        app:mrl_rippleDuration="350">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:onClick="showPriv"
+                            android:orientation="horizontal"
+                            tools:ignore="PrivateResource">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_margin="15dp"
+                                android:contentDescription="@string/priv"
+                                android:src="@drawable/privacy_icon" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/text_priv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="30dp"
+                                android:text="@string/priv"
+                                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                        </LinearLayout>
+
+                    </com.balysv.materialripple.MaterialRippleLayout>
+
+                    <com.balysv.materialripple.MaterialRippleLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:mrl_rippleColor="@color/colorAccent"
+                        app:mrl_rippleDelayClick="false"
+                        app:mrl_rippleDuration="350">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:onClick="showLicense"
+                            android:orientation="horizontal"
+                            tools:ignore="PrivateResource">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_margin="15dp"
+                                android:contentDescription="@string/license"
+                                android:src="@drawable/license_icon" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/text_license"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="30dp"
+                                android:text="@string/license"
+                                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                        </LinearLayout>
+
+                    </com.balysv.materialripple.MaterialRippleLayout>
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
