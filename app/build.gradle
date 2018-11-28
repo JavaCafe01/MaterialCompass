@@ -34,7 +34,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     //Library Presenter
-    implementation 'com.github.franmontiel:AttributionPresenter:1.0'
+    implementation 'com.github.franmontiel:AttributionPresenter:1.0.1'
 
     //Ripple Effect Library
     implementation 'com.balysv:material-ripple:1.0.2'
@@ -44,4 +44,7 @@ dependencies {
 
     //Circle Image View
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    //Theme
+    implementation 'com.github.Daio-io:dresscode:v1.0.0'
 }
