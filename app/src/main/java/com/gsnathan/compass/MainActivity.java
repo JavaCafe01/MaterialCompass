@@ -3,17 +3,8 @@ package com.gsnathan.compass;
 import android.Manifest;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.preference.PreferenceManager;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.PermissionChecker;
-
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,17 +19,19 @@ import android.widget.Toast;
 
 import com.kobakei.ratethisapp.RateThisApp;
 
-import java.util.List;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.PermissionChecker;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    GPSTracker gps;
     private Compass compass;
     private ImageView compassView;
     private TextView degreeView;
     private TextView coordView;
-    private boolean useDarkTheme;
     private AlertDialog dialogBuilder;
-    GPSTracker gps;
     private boolean isFirstRun;
     private float currentAzimuth;
 
@@ -62,14 +55,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkPermissions() {
-        int permission1 = PermissionChecker.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
-        int permission2 = PermissionChecker.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
-        if (permission1 == PermissionChecker.PERMISSION_GRANTED || permission2 == PermissionChecker.PERMISSION_GRANTED) {
+        int permission1 = PermissionChecker.checkSelfPermission(
+                this, Manifest.permission.ACCESS_FINE_LOCATION);
+        int permission2 = PermissionChecker.checkSelfPermission(
+                this, Manifest.permission.ACCESS_COARSE_LOCATION);
+        if (permission1 == PermissionChecker.PERMISSION_GRANTED
+                || permission2 == PermissionChecker.PERMISSION_GRANTED) {
             //good to go
         } else {
             ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
-                    1);
+                    new String[]{
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                    }, 1);
         }
     }
 
@@ -81,13 +79,17 @@ public class MainActivity extends AppCompatActivity {
             coordView.setText(doubToDMS(latitude, true) + "  " + doubToDMS(longitude, false));
         } else {
             coordView.setText(R.string.perm_notgranted);
-            //Utils.showToast("Go to Material Compass settings to change location permission", Toast.LENGTH_SHORT, getApplicationContext());
+            /*
+            Utils.showToast(
+                    "Go to Material Compass settings to change location permission",
+                    Toast.LENGTH_SHORT, getApplicationContext());
+            */
         }
     }
 
     private void changeTheme() {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        useDarkTheme = sp.getBoolean("theme_pref", false);
+        boolean useDarkTheme = sp.getBoolean("theme_pref", false);
         if (useDarkTheme) {
             setTheme(R.style.AppThemeDark);
         } else {
@@ -96,10 +98,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-        compassView = (ImageView) findViewById(R.id.image_dial);
-        degreeView = (TextView) findViewById(R.id.degree_view);
-        coordView = (TextView) findViewById(R.id.coord_view);
+        setSupportActionBar(findViewById(R.id.toolbar));
+        compassView = findViewById(R.id.image_dial);
+        degreeView = findViewById(R.id.degree_view);
+        coordView = findViewById(R.id.coord_view);
     }
 
     @Override
@@ -124,12 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupCompass() {
         compass = new Compass(this);
-        Compass.CompassListener cl = new Compass.CompassListener() {
-            @Override
-            public void onNewAzimuth(float azimuth) {
-                adjustArrow(azimuth);
-            }
-        };
+        Compass.CompassListener cl = this::adjustArrow;
         compass.setListener(cl);
     }
 
@@ -174,8 +171,8 @@ public class MainActivity extends AppCompatActivity {
 
     private String doubToDMS(double value, boolean isLat) {
         String direction;
-        int degrees = 0, minutes = 0, seconds = 0;
-        double val = Math.abs(value), min = 0;
+        int degrees, minutes, seconds;
+        double val = Math.abs(value), min;
         degrees = (int) val;
         min = (val - (double) degrees) * 60;
         minutes = (int) min;
@@ -230,13 +227,8 @@ public class MainActivity extends AppCompatActivity {
         dialogBuilder.setIcon(R.mipmap.ic_launcher);
         dialogBuilder.setView(calibrateView);
 
-        Button btnClose = (Button) calibrateView.findViewById(R.id.close);
-        btnClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogBuilder.dismiss();
-            }
-        });
+        Button btnClose = calibrateView.findViewById(R.id.close);
+        btnClose.setOnClickListener(v -> dialogBuilder.dismiss());
 
         dialogBuilder.show();
     }
@@ -251,9 +243,10 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-                    Utils.showToast("Permission denied to access your location", Toast.LENGTH_LONG, this);
+                    Utils.showToast(
+                            "Permission denied to access your location",
+                            Toast.LENGTH_LONG, this);
                 }
-                return;
             }
         }
     }

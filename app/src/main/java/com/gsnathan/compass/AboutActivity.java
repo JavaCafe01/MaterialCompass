@@ -1,14 +1,8 @@
 package com.gsnathan.compass;
 
 import android.content.SharedPreferences;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,11 +10,17 @@ import com.franmontiel.attributionpresenter.AttributionPresenter;
 import com.franmontiel.attributionpresenter.entities.Attribution;
 import com.franmontiel.attributionpresenter.entities.License;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 public class AboutActivity extends AppCompatActivity {
 
+    private final String APP_VERSION_RELEASE = "Version " + Utils.getAppVersion();
+    //contains Version + the version number
+    private final String APP_VERSION_DEBUG = "Version " + Utils.getAppVersion() + "-debug";
+    //contains Version + the version number + debug
+
     TextView versionView;   //shows the version
-    private final String APP_VERSION_RELEASE = "Version " + Utils.getAppVersion();   //contains Version + the version number
-    private final String APP_VERSION_DEBUG = "Version " + Utils.getAppVersion() + "-debug";   //contains Version + the version number + debug
     private Toolbar toolbar;
 
     @Override
@@ -47,9 +47,9 @@ public class AboutActivity extends AppCompatActivity {
 
     private void initUI() {
         //initialize the textview
-        versionView = (TextView) findViewById(R.id.text_version);
+        versionView = findViewById(R.id.text_version);
         //initialize the toolbar
-        toolbar = (Toolbar) findViewById(R.id.my_toolbar_about);
+        toolbar = findViewById(R.id.my_toolbar_about);
 
         // check if app is debug
         if (BuildConfig.DEBUG) {
@@ -149,7 +149,6 @@ public class AboutActivity extends AppCompatActivity {
     public void navToSourceCode(View v) {
         startActivity(Utils.webIntent("https://github.com/JavaCafe01/MaterialCompass"));
     }
-
 
     @Override
     public void onBackPressed() {

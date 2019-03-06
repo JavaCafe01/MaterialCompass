@@ -31,8 +31,8 @@
                 android:id="@+id/coord_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
                 android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:text="@string/rand_mes"
                 android:textAlignment="center"
                 android:textSize="18sp"
@@ -51,8 +51,8 @@
                 android:layout_above="@+id/image_dial"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="36dp"
+                android:layout_marginBottom="10dp"
                 android:elevation="4dp"
                 android:src="@drawable/line" />
 
@@ -62,17 +62,17 @@
                 android:layout_height="320dp"
                 android:layout_centerInParent="true"
                 android:elevation="4dp"
-                android:src="@drawable/compass_dial"/>
+                android:src="@drawable/compass_dial" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/degree_view"
-                android:layout_below="@id/image_dial"
-                android:paddingTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@id/image_dial"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
                 android:layout_marginBottom="27dp"
+                android:paddingTop="30dp"
                 android:text="@string/rand_mes"
                 android:textAlignment="center"
                 android:textSize="40sp"

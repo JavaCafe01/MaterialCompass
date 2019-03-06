@@ -5,16 +5,21 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.preference.*;
-import androidx.core.app.NavUtils;
-import androidx.core.graphics.drawable.DrawableCompat;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
+import android.preference.SwitchPreference;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
-import android.util.TypedValue;
-import android.view.*;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import androidx.core.app.NavUtils;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 public class MyPreferencesActivity extends AppCompatPreferenceActivity {
 
@@ -34,7 +39,7 @@ public class MyPreferencesActivity extends AppCompatPreferenceActivity {
 
         if (useDarkTheme) {
             setTheme(R.style.AppThemeDark);
-            changeStatusBarColor(R.color.colorBlack);
+            changeStatusBarColor();
             getListView().setBackgroundColor(getResources().getColor(R.color.colorGrey));
         }
 
@@ -51,14 +56,11 @@ public class MyPreferencesActivity extends AppCompatPreferenceActivity {
         getListView().setPadding(horizontalMargin, topMargin, horizontalMargin, verticalMargin);
 
         SwitchPreference toggle = (SwitchPreference) findPreference("theme_pref");
-        toggle.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
-                return false;
-            }
+        toggle.setOnPreferenceClickListener(preference -> {
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+            return false;
         });
 
         Preference button = findPreference("per_pref");
@@ -69,29 +71,26 @@ public class MyPreferencesActivity extends AppCompatPreferenceActivity {
             button.setSummary("Grant location");
         }
 
-        button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                if (Utils.permissionsGranted(getApplicationContext())) {
-                    Utils.showToast("Permission is granted", Toast.LENGTH_SHORT, getApplicationContext());
-                } else {
-                    Utils.openPermissionSettings(getApplicationContext());
-                }
-                return true;
+        button.setOnPreferenceClickListener(preference -> {
+            if (Utils.permissionsGranted(getApplicationContext())) {
+                Utils.showToast("Permission is granted", Toast.LENGTH_SHORT, getApplicationContext());
+            } else {
+                Utils.openPermissionSettings(getApplicationContext());
             }
+            return true;
         });
     }
 
-    private void changeStatusBarColor(int color) {
+    private void changeStatusBarColor() {
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(getResources().getColor(color));
+        window.setStatusBarColor(getResources().getColor(R.color.colorBlack));
     }
 
     private void setupActionBar() {
-        getLayoutInflater().inflate(R.layout.toolbar, (ViewGroup) findViewById(android.R.id.content));
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        getLayoutInflater().inflate(R.layout.toolbar, findViewById(android.R.id.content));
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setElevation(4);
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
         if (useDarkTheme) {
@@ -110,11 +109,9 @@ public class MyPreferencesActivity extends AppCompatPreferenceActivity {
         Drawable arrowDrawable = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
         Drawable wrapped = DrawableCompat.wrap(arrowDrawable);
 
-        if (arrowDrawable != null && wrapped != null) {
-            // This should avoid tinting all the arrows
-            arrowDrawable.mutate();
-            DrawableCompat.setTint(wrapped, Color.WHITE);
-        }
+        // This should avoid tinting all the arrows
+        arrowDrawable.mutate();
+        DrawableCompat.setTint(wrapped, Color.WHITE);
 
         return wrapped;
     }
@@ -126,12 +123,7 @@ public class MyPreferencesActivity extends AppCompatPreferenceActivity {
         LinearLayout root = (LinearLayout) findViewById(android.R.id.list).getParent().getParent().getParent();
         Toolbar bar = (Toolbar) LayoutInflater.from(this).inflate(R.layout.toolbar, root, false);
         root.addView(bar, 0); // insert at top
-        bar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        bar.setNavigationOnClickListener(v -> finish());
     }
 
     @Override
