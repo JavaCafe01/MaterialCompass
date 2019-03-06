@@ -39,7 +39,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:divider="?android:dividerHorizontal"
+            android:divider="?attr/dividerHorizontal"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -50,7 +50,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
-                android:divider="?android:dividerHorizontal"
+                android:divider="?attr/dividerHorizontal"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:showDividers="middle">
@@ -79,7 +79,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                 </LinearLayout>
 
@@ -100,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:divider="?android:dividerHorizontal"
+                    android:divider="?attr/dividerHorizontal"
                     android:focusable="true"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -144,7 +144,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="30dp"
                                 android:text="@string/code"
-                                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
                         </LinearLayout>
 
                     </com.balysv.materialripple.MaterialRippleLayout>
@@ -179,7 +179,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="30dp"
                                 android:text="@string/libs"
-                                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
                         </LinearLayout>
 
                     </com.balysv.materialripple.MaterialRippleLayout>
@@ -214,7 +214,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="30dp"
                                 android:text="@string/priv"
-                                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
                         </LinearLayout>
 
                     </com.balysv.materialripple.MaterialRippleLayout>
@@ -249,7 +249,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="30dp"
                                 android:text="@string/license"
-                                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
                         </LinearLayout>
 
                     </com.balysv.materialripple.MaterialRippleLayout>
@@ -265,7 +265,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
-                android:divider="?android:dividerHorizontal"
+                android:divider="?attr/dividerHorizontal"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:showDividers="middle">
@@ -294,7 +294,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:text="@string/author"
-                        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                 </LinearLayout>
 
@@ -315,7 +315,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:divider="?android:dividerHorizontal"
+                    android:divider="?attr/dividerHorizontal"
                     android:focusable="true"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -350,7 +350,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="30dp"
                                 android:text="@string/email"
-                                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                         </LinearLayout>
 
@@ -386,7 +386,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="30dp"
                                 android:text="@string/git"
-                                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
                         </LinearLayout>
 
